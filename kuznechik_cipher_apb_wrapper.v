@@ -67,8 +67,7 @@ wire	[127:0]	d_o;
 		mem[2] <= valid;
 	end
 
-
-assign	pslverr_o = pwrite_i && ((20 <= paddr_i  && paddr_i <= 35) || (paddr_i == 3) || (paddr_i == 2));
+assign	pslverr_o = pwrite_i && ((20 <= paddr_i) || (paddr_i == 0 && pstrb_i & 'hc));
 assign	pready_o = pready;
 assign	resetn = mem[0] && presetn_i;
 assign	req_ack = mem[1];
