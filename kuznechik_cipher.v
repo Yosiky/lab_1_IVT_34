@@ -78,7 +78,7 @@ begin
             begin
                 if (request_i)
                 begin
-                    state <= KEY_PHASE;
+                    state   <= KEY_PHASE;
                     value <= 0;
                     p <= 0;
                     k <= 0;
@@ -138,22 +138,21 @@ begin
             end
             FINISH:
             begin
-                if (ack_i == 1)
+                if (request_i)
+                begin
+                    state <= KEY_PHASE;
+                    value <= 0;
+                    p <= 0;
+                    k <= 0;
+                    busy <= 0;
+                    valid_o <= 0;
+                    data <= data_i;
+                end
+                else if (ack_i == 1)
                 begin
                     valid_o <= 0;
                     busy <= 0;
-                    if (request_i)
-                    begin
-                        state <= KEY_PHASE;
-                        value <= 0;
-                        p <= 0;
-                        k <= 0;
-                        busy <= 0;
-                        valid_o <= 0;
-                        data <= data_i;
-                    end
-                    else
-                        state <= IDLE;
+                    state <= IDLE;
                 end
             end
         endcase    

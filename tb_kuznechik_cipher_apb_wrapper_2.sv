@@ -156,6 +156,7 @@ module tb_kuznechik_cipher_apb_wrapper();
         bit [31:0] control;
         exec_apb_read_trans(CONTROL, control, pslverr);
         valid = control[VALID*8];
+        $display("get_cipher_valid = %d", control);
     endtask
 
     task set_cipher_req_ack(
@@ -227,9 +228,10 @@ module tb_kuznechik_cipher_apb_wrapper();
         // Set control register
         control[RST    ] = 1;
         control[REQ_ACK] = 1;
-        // Wait for encryption
+        // Wait for encryption       
         do begin
             get_cipher_valid(valid, 1'b0);
+            $display("valid = %0d", valid);
         end while(!valid);
         // Get encripted data
         get_cipher_data_out(data_out, 4'b0000);
