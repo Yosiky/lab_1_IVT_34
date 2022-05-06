@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module tb_kuznechik_cipher_apb_wrapper();
+module tb_kuznechik_cipher_apb();
 
     ////////////////////
     // Design package //
@@ -156,7 +156,6 @@ module tb_kuznechik_cipher_apb_wrapper();
         bit [31:0] control;
         exec_apb_read_trans(CONTROL, control, pslverr);
         valid = control[VALID*8];
-        $display("get_cipher_valid = %d", control);
     endtask
 
     task set_cipher_req_ack(
@@ -228,10 +227,9 @@ module tb_kuznechik_cipher_apb_wrapper();
         // Set control register
         control[RST    ] = 1;
         control[REQ_ACK] = 1;
-        // Wait for encryption       
+        // Wait for encryption
         do begin
             get_cipher_valid(valid, 1'b0);
-            $display("valid = %0d", valid);
         end while(!valid);
         // Get encripted data
         get_cipher_data_out(data_out, 4'b0000);
@@ -452,17 +450,17 @@ module tb_kuznechik_cipher_apb_wrapper();
     initial begin
         // Set data to cipher
         bit [10:0][127:0] data_to_cipher;
-        data_to_cipher[00] = 128'h3ee5c99f9a41c389ac17b4fe99c72ae4;
-        data_to_cipher[01] = 128'h79cfed3c39fa7677b970bb42a5631ccd;
-        data_to_cipher[02] = 128'h63a148b3d9774cede1c54673c68dcd03;
-        data_to_cipher[03] = 128'h2ed02c74160391fd9e8bd4ba21e79a9d;
-        data_to_cipher[04] = 128'h74f245305909226922ac9d24b9ed3b20;
-        data_to_cipher[05] = 128'h03dde21c095413db093bb8636d8fc082;
-        data_to_cipher[06] = 128'hbdeb379c9326a275c58c756885c40d47;
-        data_to_cipher[07] = 128'h2dcabdf6b6488f5f3d56c2fd3d2357b0;
-        data_to_cipher[08] = 128'h887adf8b545c4334e0070c63d2f344a3;
-        data_to_cipher[09] = 128'h23feeb9115fab3e4f9739578010f212c;
-        data_to_cipher[10] = 128'h53e0ebee97b0c1b8377ac5bce14cb4e8;
+        data_to_cipher[00] <= 128'hc177d2d35af6d17477545bfcf97d43a4;
+        data_to_cipher[01] <= 128'h1b877fafa3ba0026e8ef95de495ac74c;
+        data_to_cipher[02] <= 128'hcd84585b9b46f02519d00f7111a34452;
+        data_to_cipher[03] <= 128'hfcec82557f40f3310eed30d097b2c368;
+        data_to_cipher[04] <= 128'hc6cc2ddec17abc61e995062df1dead37;
+        data_to_cipher[05] <= 128'hc0ddbf359d704ad7f52420798f94fc4b;
+        data_to_cipher[06] <= 128'hdb434f2542b562db98eb19ef012eadb7;
+        data_to_cipher[07] <= 128'hfe59f8e79163e45ec6c47cdf80e4b0c4;
+        data_to_cipher[08] <= 128'h295d9b247899b5257b88c319519e6d15;
+        data_to_cipher[09] <= 128'h30f6af74f3666a67216db25238be91e2;
+        data_to_cipher[10] <= 128'h44bf130e7bcab6a1d2d867280bb89269;
         fork
             begin
                 reset();
