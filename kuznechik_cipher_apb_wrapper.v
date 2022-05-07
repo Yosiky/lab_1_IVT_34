@@ -54,25 +54,9 @@ wire	[127:0]	d_o;
 	begin
 		if (valid)
 		begin
-            mem[35] <= d_o[127:120];
-            mem[34] <= d_o[119:112];
-            mem[33] <= d_o[111:104];
-            mem[32] <= d_o[103:96];
-            mem[31] <= d_o[95:88];
-            mem[30] <= d_o[87:80];
-            mem[29] <= d_o[79:72];
-            mem[28] <= d_o[71:64];
-            mem[27] <= d_o[63:56];
-            mem[26] <= d_o[55:48];
-            mem[25] <= d_o[47:40];
-            mem[24] <= d_o[39:32];
-            mem[23] <= d_o[31:24];
-            mem[22] <= d_o[23:16];
-            mem[21] <= d_o[15:8];
-            mem[20] <= d_o[7:0];
-        end
-		//for (integer i = 0; i < 16; i = i + 1)
-		//	mem[20 + i] <= d_o[(i + 1) * 8 - 1 -: 7];
+			for (integer i = 0; i < 16; i = i + 1)
+				mem[20 + i] <= d_o[i * 8 +: 8];
+		end
 		mem[3][0] <= busy;	
 		mem[2] <= valid;
 	end
