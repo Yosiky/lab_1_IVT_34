@@ -40,8 +40,7 @@ wire	[127:0]	d_o;
 	begin
 		if (pwrite_i)
 		begin
-			if (!((20 <= paddr_i) ||
-				(paddr_i == 3) || (paddr_i == 2)))
+			if (!pslverr_o)
 			begin
 				for (integer i = 0; i < 4; i = i + 1)
 					if (pstrb_i[i])
@@ -61,7 +60,8 @@ wire	[127:0]	d_o;
 		mem[2] <= valid;
 	end
 
-assign	pslverr_o = pwrite_i && ((20 <= paddr_i) || (paddr_i == 0 && pstrb_i & 'hc));
+assign	pslverr_o = ((pwrite_i && (20 <= paddr_i)) || (paddr_i == 0 && pstrb_i[3:2]));
+					//|| (psel_i == 1 && (penable_i == 0 ^ pready_o == 0));
 assign	pready_o = pready;	
 assign	resetn = mem[0] && presetn_i;
 assign	req_ack = mem[1][0];
