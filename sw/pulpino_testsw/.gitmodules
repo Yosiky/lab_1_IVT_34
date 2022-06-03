@@ -1,0 +1,3 @@
+[submodule "board_support/pulpino_hwlib"]
+	path = board_support/pulpino_hwlib
+	url = git@borisblade.ru:training_camp/pulpino_hwlib.git

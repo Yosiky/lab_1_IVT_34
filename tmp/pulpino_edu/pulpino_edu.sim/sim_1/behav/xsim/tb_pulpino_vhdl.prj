@@ -1,0 +1,17 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../../submodules/pulpino/apb_uart/apb_uart.vhd" \
+"../../../../../../submodules/pulpino/apb_uart/slib_clock_div.vhd" \
+"../../../../../../submodules/pulpino/apb_uart/slib_counter.vhd" \
+"../../../../../../submodules/pulpino/apb_uart/slib_edge_detect.vhd" \
+"../../../../../../submodules/pulpino/apb_uart/slib_fifo.vhd" \
+"../../../../../../submodules/pulpino/apb_uart/slib_input_filter.vhd" \
+"../../../../../../submodules/pulpino/apb_uart/slib_input_sync.vhd" \
+"../../../../../../submodules/pulpino/apb_uart/slib_mv_filter.vhd" \
+"../../../../../../submodules/pulpino/apb_uart/uart_baudgen.vhd" \
+"../../../../../../submodules/pulpino/apb_uart/uart_interrupt.vhd" \
+"../../../../../../submodules/pulpino/apb_uart/uart_receiver.vhd" \
+"../../../../../../submodules/pulpino/apb_uart/uart_transmitter.vhd" \
+
+# Do not sort compile order
+nosort
