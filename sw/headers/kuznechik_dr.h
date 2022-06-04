@@ -12,15 +12,15 @@
 # define KUZNECHIK_DATA_IN  (KUZNECHIK_ADDR + 0x4)
 # define KUZNECHIK_DATA_OUT (KUZNECHIK_ADDR + 0x14)
 
-__attribute__((packed)) typename struct s_KUZNECHIK
+typedef __attribute__((packed))struct s_KUZNECHIK
 {
     uint8_t *rst;
     uint8_t *req;
     uint8_t *ack;
     uint8_t *valid;
     uint8_t *busy;
-    uint8_t *data_in[16];
-    uint8_t *data_out[16];
+    uint8_t *data_in;
+    uint8_t *data_out;
 } t_KUZNECHIK;
 
 

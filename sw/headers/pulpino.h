@@ -15,7 +15,7 @@
 #define I2C_BASE_ADDR                 ( SOC_PERIPHERALS_BASE_ADDR + 0x5000 )
 #define FLL_BASE_ADDR                 ( SOC_PERIPHERALS_BASE_ADDR + 0x6000 )
 #define SOC_CTRL_BASE_ADDR            ( SOC_PERIPHERALS_BASE_ADDR + 0x7000 )
-#define KUZNECHIK_ADDR                ( SOC_PERIPHERALS_BASW_ADDR + 0x8000 )
+#define KUZNECHIK_ADDR                ( SOC_PERIPHERALS_BASE_ADDR + 0x8000 )
 
 
 /** STDOUT */

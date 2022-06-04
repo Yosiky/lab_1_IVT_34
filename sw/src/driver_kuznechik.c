@@ -1,4 +1,4 @@
-#include "../inc/kuznechik_dr.h"
+#include "../headers/kuznechik_dr.h"
 
 t_KUZNECHIK *kuznechik_init(void)
 {
